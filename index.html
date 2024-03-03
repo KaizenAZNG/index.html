@@ -1,8 +1,8 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>QR Code</title>
+    <title>Redirect</title>
     <style>
       body {
         background-color: lightblue;
@@ -57,14 +57,16 @@
     </style>
   </head>
   <body>
+    Redirecting...
+    <div class="lds-ripple"><div></div><div></div></div>
     <script>
-      const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxlEptoskc6OBunBE3YUecxo-dKbsDxlhwEkaFSO6Xcf8uk-9j_mf6gz2Dqv1dKTMDuaQ/exec";
+      const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbw4rJFfhXaZEmqpt7s7geP-GjTW11_DiyBMaq_EAmdVSq7xoG55vxoauPMAKUHW-TieSA/exec";
 
       var url = document.location.href;
-      var k = url.substr(url.lastIndexOf("k=")+2);
+      var key = url.substr(url.lastIndexOf("k=") + 2);
 
-      if (k) {
-        fetch(AS_URL_BASE + '?K=' + k)
+      if (key) {
+        fetch(AS_URL_BASE + '?k=' + key)
           .then(r => r.text())
           .then((r) => {
             console.log(r);
@@ -72,11 +74,8 @@
               document.location.replace(r);
             }
           })
-          .catch(err => console.log(err))
+          .catch(err => console.log(err));
       }
     </script>
-
-    <div class="lds-ripple"><div></div><div></div></div>
   </body>
 </html>
-
