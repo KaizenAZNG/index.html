@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbzZUQ2m_iIZ0KhR2fBDJK9ExBBcW2bBPpY0nMtmhFOYEa7FR4f0grQwZLVfpc-lq4wJ5A/exec";
+
+      var url = document.location.href;
+      var k = url.substr(url.lastIndexOf("k=") + 2);
+
+      if (k) {
+        fetch(AS_URL_BASE + '?K=' + k)
+          .then(r => r.text())
+          .then((r) => {
+            console.log(r);
+            if (r) {
+              document.location.replace(r);
+            }
+          })
+          .catch(err => console.log(err))
+      }
+    </script>
+  </head>
+  <body>
+    <div>Redirecting...</div>
+  </body>
+</html>
